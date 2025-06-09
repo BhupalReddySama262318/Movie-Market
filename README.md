@@ -1,12 +1,17 @@
-# My First React App
+# Movie Market
 
-A modern movie discovery web app built with React, Vite, and Tailwind CSS. Search for movies, view trending titles, and enjoy a beautiful, responsive UI.
+A modern movie discovery web app built with React, Vite, and Tailwind CSS. Search for movies, filter by genre and year, view trending titles, and enjoy a beautiful, responsive UI.
+
+- **Live Website:** [https://movie-market.onrender.com/](https://movie-market.onrender.com/)
+- **GitHub Repo:** [https://github.com/BhupalReddySama262318/Movie-Market](https://github.com/BhupalReddySama262318/Movie-Market)
 
 ## Features
 - Search for movies using The Movie Database (TMDb) API
-- View trending movies
+- Filter movies by genre and year
+- View trending movies (tracked with Appwrite backend)
 - Responsive and modern design with Tailwind CSS
 - Debounced search for efficient API usage
+- Movie details modal with description and ratings
 - Error handling and loading states
 
 ## Tech Stack
@@ -14,6 +19,7 @@ A modern movie discovery web app built with React, Vite, and Tailwind CSS. Searc
 - [Vite](https://vitejs.dev/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [TMDb API](https://www.themoviedb.org/documentation/api)
+- [Appwrite](https://appwrite.io/) (for trending analytics)
 
 ## Getting Started
 
@@ -24,8 +30,8 @@ A modern movie discovery web app built with React, Vite, and Tailwind CSS. Searc
 ### Installation
 1. **Clone the repository:**
    ```powershell
-   git clone <your-repo-url>
-   cd my-first-react-app
+   git clone https://github.com/BhupalReddySama262318/Movie-Market.git
+   cd Movie-Market
    ```
 2. **Install dependencies:**
    ```powershell
@@ -35,12 +41,15 @@ A modern movie discovery web app built with React, Vite, and Tailwind CSS. Searc
    ```
 3. **Set up environment variables:**
    - Create a `.env.local` file in the root directory.
-   - Add your TMDb API key:
+   - Add your TMDb and Appwrite API keys:
      ```env
      VITE_TMDB_API_KEY=your_tmdb_api_key_here
+     VITE_APPWRITE_PROJECT_ID=your_project_id
+     VITE_APPWRITE_DATABASE_ID=your_database_id
+     VITE_APPWRITE_COLLECTION_ID=your_collection_id
      ```
 
-### Running the App
+### Running the App Locally
 ```powershell
 npm run dev
 # or
@@ -49,9 +58,12 @@ yarn dev
 
 The app will be available at [http://localhost:5173](http://localhost:5173) by default.
 
+## Deployment
+This project is deployed on [Render](https://render.com/) using Docker. All environment variables are securely set in the Render dashboard.
+
 ## Project Structure
 ```
-my-first-react-app/
+Movie-Market/
 ├── public/           # Static assets
 ├── src/              # Source code
 │   ├── components/   # React components
@@ -64,13 +76,6 @@ my-first-react-app/
 ├── vite.config.js
 └── ...
 ```
-
-## Customization
-- Update the UI in `src/components/` and `src/index.css`.
-- Change API endpoints or add new features in `src/App.jsx`.
-
-## License
-This project is for educational purposes.
 
 ## Appwrite Integration
 
@@ -96,10 +101,6 @@ This project uses [Appwrite](https://appwrite.io/) as a backend service to store
      ```
 4. **Configure Permissions:**
    - Ensure your collection has appropriate read/write permissions for your app.
-
-### Related Code
-- Appwrite logic is in [`src/appwrite.js`](src/appwrite.js)
-- Trending movies and search analytics are handled via `getTrendingMovies` and `updateSearchCount` functions.
 
 ---
 
