@@ -10,26 +10,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Log in to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+    - name: Build Docker image
+      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/movie-market .
 
-      - name: Build Docker image
-        run: |
-          docker build \
-            --build-arg VITE_TMDB_API_KEY=${{ secrets.VITE_TMDB_API_KEY }} \
-            --build-arg VITE_APPWRITE_PROJECT_ID=${{ secrets.VITE_APPWRITE_PROJECT_ID }} \
-            --build-arg VITE_APPWRITE_DATABASE_ID=${{ secrets.VITE_APPWRITE_DATABASE_ID }} \
-            --build-arg VITE_APPWRITE_COLLECTION_ID=${{ secrets.VITE_APPWRITE_COLLECTION_ID }} \
-            -t ${{ secrets.DOCKER_USERNAME }}/movie-market .
-
-      - name: Push Docker image
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/movie-market
+    - name: Push Docker image
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/movie-market
