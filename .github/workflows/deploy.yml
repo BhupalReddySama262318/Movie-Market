@@ -20,7 +20,14 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build Docker image
-      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/movie-market .
+      run: |
+        docker build \
+          --build-arg VITE_TMDB_API_KEY=${{ secrets.VITE_TMDB_API_KEY }} \
+          --build-arg VITE_APPWRITE_PROJECT_ID=${{ secrets.VITE_APPWRITE_PROJECT_ID }} \
+          --build-arg VITE_APPWRITE_DATABASE_ID=${{ secrets.VITE_APPWRITE_DATABASE_ID }} \
+          --build-arg VITE_APPWRITE_COLLECTION_ID=${{ secrets.VITE_APPWRITE_COLLECTION_ID }} \
+          -t ${{ secrets.DOCKER_USERNAME }}/movie-market .
+
 
     - name: Push Docker image
       run: docker push ${{ secrets.DOCKER_USERNAME }}/movie-market
