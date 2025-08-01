@@ -2,7 +2,7 @@
 
 A modern movie discovery web app built with React, Vite, and Tailwind CSS. Search for movies, filter by genre and year, view trending titles, and enjoy a beautiful, responsive UI.
 
-- **Live Website:** [https://movie-market.onrender.com/](https://movie-market.onrender.com/)
+- **Live Website:** [https://movie-market-three.vercel.app/](https://movie-market-three.vercel.app/)
 - **GitHub Repo:** [https://github.com/BhupalReddySama262318/Movie-Market](https://github.com/BhupalReddySama262318/Movie-Market)
 
 ## Features
