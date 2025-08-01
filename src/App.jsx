@@ -130,20 +130,14 @@ const App = () => {
       <div className="pattern">
 
         <div className="wrapper">
-          <header>
-            <img src="./hero.png" alt="Hero Banner" />
-            <h1>Find <span className='text-gradient'>Movies</span> You'll Enjoy Without 
-            the Hassle</h1>
+        <header className="text-center mb-6">
+  <img src="./hero.png" alt="Hero Banner" className="max-w-[300px] mx-auto mb-4" />
+  <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">
+    Find <span className='text-gradient'>Movies</span> You'll Enjoy Without the Hassle
+  </h1>
+</header>
 
-            <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-          </header>
-
-          <FilterSortBar
-            filterYear={filterYear} setFilterYear={setFilterYear}
-            availableYears={availableYears}
-            filterGenre={filterGenre} setFilterGenre={setFilterGenre}
-            availableGenres={availableGenres}
-          />
+          
 
           {trendingMovies.length > 0 && (
             <section className='trending'>
@@ -160,6 +154,16 @@ const App = () => {
               </ul>
             </section>
           )}
+
+
+<Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+            <FilterSortBar
+            filterYear={filterYear} setFilterYear={setFilterYear}
+            availableYears={availableYears}
+            filterGenre={filterGenre} setFilterGenre={setFilterGenre}
+            availableGenres={availableGenres}
+          />
+
 
           <section className='all-movies'>
               <h2 >All Movies</h2>
